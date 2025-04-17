@@ -19,30 +19,14 @@ if not api_key:
     sys.exit(1)
 
 app = Flask(__name__)
-# Enable CORS for all routes
+# Enable CORS for all routes with specific configuration
 CORS(app, resources={r"/*": {
-    "origins": ["*"],
+    "origins": ["https://bon-aippetit.vercel.app"],
     "methods": ["GET", "POST", "OPTIONS"],
     "allow_headers": ["Content-Type", "Accept"],
     "expose_headers": ["Content-Type"],
     "supports_credentials": True
 }})
-
-@app.after_request
-def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Accept')
-    response.headers.add('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
-    return response
-
-# Configure Gemini API
-try:
-    print("Configuring Gemini API...")
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-2.0-flash')
-except Exception as e:
-    print(f"Error configuring Gemini API: {e}")
-    sys.exit(1)
 
 @app.route('/')
 def home():
