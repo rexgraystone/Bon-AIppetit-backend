@@ -40,7 +40,7 @@ except Exception as e:
 
 @app.route('/')
 def home():
-    return "Bon AIppetit API is running!"
+    return "Bon AIppétit API is running!"
 
 @app.route('/api/test')
 def test():
