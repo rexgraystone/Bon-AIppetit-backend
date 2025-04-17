@@ -1,7 +1,7 @@
 # Bon AIppétit Backend 🍳
 
 The backend service for Bon AIppétit, a web application that transforms recipe URLs into beautiful, easy-to-follow cuisinograms.
-
+You can find the frontend repository [here](https://github.com/rexgraystone/bon-aippetit).
 ## ✨ Features
 
 - Recipe URL processing
