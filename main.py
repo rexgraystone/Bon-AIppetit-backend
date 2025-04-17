@@ -28,6 +28,15 @@ CORS(app, resources={r"/*": {
     "supports_credentials": True
 }})
 
+# Configure Gemini API
+try:
+    print("Configuring Gemini API...")
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel('gemini-2.0-flash')
+except Exception as e:
+    print(f"Error configuring Gemini API: {e}")
+    sys.exit(1)
+
 @app.route('/')
 def home():
     return "Bon AIppetit API is running!"
