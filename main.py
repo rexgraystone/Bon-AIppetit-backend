@@ -25,7 +25,8 @@ CORS(app, resources={r"/*": {
     "methods": ["GET", "POST", "OPTIONS"],
     "allow_headers": ["Content-Type", "Accept"],
     "expose_headers": ["Content-Type"],
-    "supports_credentials": True
+    "supports_credentials": True,
+    "max_age": 3600
 }})
 
 # Configure Gemini API
