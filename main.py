@@ -155,6 +155,7 @@ def gemini_api():
         9. Use only Top-Down flowchart direction
         10. Do not include any optional steps within parentheses
         11. The name of the recipe should be the name of the dish, do not include any adjectives
+        12. Only uses rectangles for the steps, do not use any other shapes like diamonds
 
         Generate the output in the below syntax:
         Recipe Name: 
