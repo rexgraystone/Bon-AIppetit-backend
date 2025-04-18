@@ -21,7 +21,7 @@ if not api_key:
 app = Flask(__name__)
 # Enable CORS for all routes with specific configuration
 CORS(app, resources={r"/*": {
-    "origins": ["https://bon-aippetit.vercel.app"],
+    "origins": ["https://bon-aippetit.vercel.app", "http://localhost:3000"],
     "methods": ["GET", "POST", "OPTIONS"],
     "allow_headers": ["Content-Type", "Accept"],
     "expose_headers": ["Content-Type"],
@@ -42,8 +42,14 @@ except Exception as e:
 def home():
     return "Bon AIppétit API is running!"
 
-@app.route('/api/test')
+@app.route('/api/test', methods=['GET', 'OPTIONS'])
 def test():
+    if request.method == 'OPTIONS':
+        response = make_response()
+        response.headers['Access-Control-Allow-Origin'] = 'https://bon-aippetit.vercel.app'
+        response.headers['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        return response
     return jsonify({"status": "API is working"})
 
 def scrape(url):
